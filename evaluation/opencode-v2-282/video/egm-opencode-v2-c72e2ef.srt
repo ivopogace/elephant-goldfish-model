@@ -83,14 +83,18 @@ Twenty-six reviewer sessions started fresh and stayed read-only.
 No read of AGENTS.md succeeded, and the one attempt was denied.
 
 22
-00:01:26,035 --> 00:01:31,430
-The orchestrator now asks before it reads the fake secrets through a symbolic link.
+00:01:26,035 --> 00:01:31,851
+In a separate probe, the orchestrator asked before reading the fake secrets through a symbolic
 
 23
-00:01:31,590 --> 00:01:36,687
-Two things remain unverified: approvals came from a script, not a person,
+00:01:31,851 --> 00:01:32,280
+link.
 
 24
-00:01:36,687 --> 00:01:39,810
+00:01:32,440 --> 00:01:37,537
+Two things remain unverified: approvals came from a script, not a person,
+
+25
+00:01:37,537 --> 00:01:40,660
 and the incomplete review path never fired.
 

@@ -72,13 +72,13 @@
         "+ 2 brainstorms and 1 full review completed, 11 gates, all checks pass.",
         "+ 26 reviewer sessions: fresh context, read and glob only, no writes.",
         "+ No reviewer read of AGENTS.md succeeded. The one attempt was denied.",
-        "+ The orchestrator asks before reading .env through a symlink.",
+        "+ Separate probe: the orchestrator asks before reading .env via a symlink.",
         "? Approvals came from a script. Human approval is not verified.",
         "? The incomplete-review path did not fire with a real model."
       ],
       "footer": "Details and traces: evaluation/opencode-v2-282/REPORT.md",
       "pad": 1.2,
-      "say": "Across the runs on this candidate, two brainstorms and one full review completed, and every check passed. | Twenty-six reviewer sessions started fresh and stayed read-only. No read of AGENTS.md succeeded, and the one attempt was denied. | The orchestrator now asks before it reads the fake secrets through a symbolic link. | Two things remain unverified: approvals came from a script, not a person, and the incomplete review path never fired."
+      "say": "Across the runs on this candidate, two brainstorms and one full review completed, and every check passed. | Twenty-six reviewer sessions started fresh and stayed read-only. No read of AGENTS.md succeeded, and the one attempt was denied. | In a separate probe, the orchestrator asked before reading the fake secrets through a symbolic link. | Two things remain unverified: approvals came from a script, not a person, and the incomplete review path never fired."
     }
   ]
 }
