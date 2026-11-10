@@ -9,6 +9,9 @@ real model (LongCat 2.5 through OpenCode Go).
 * [`results/rerun-c72e2ef/`](results/rerun-c72e2ef) and
   [`results/rerun-c72e2ef-qwen/`](results/rerun-c72e2ef-qwen): the reruns on the author's fix
   commit with two models.
+* [`results/limit-probes/`](results/limit-probes): probes of two limits the guide lists.
+* [`results/agents-md-followed.md`](results/agents-md-followed.md): which reviews followed a
+  planted rule and which only reported it.
 * [`results/`](results): per-run analysis, the scripted operator's log, the files each
   workflow wrote, and sanitized traces.
 * [`harness/`](harness): the scripts that produced the results.

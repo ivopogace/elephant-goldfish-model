@@ -110,7 +110,8 @@ def run(args) -> int:
     else:
         fixture = fixture_module.build(out / 'fixture', Path(args.install), args.model, None,
                                        with_design=args.workflow.startswith('review'), inject=args.inject,
-                                       long_design=args.long_design, link_agents_md=args.link_agents_md)
+                                       long_design=args.long_design, link_agents_md=args.link_agents_md,
+                                       link_other_file=args.link_other_file)
     if args.without_guard:
         # Negative control: the same configuration with the guard plugin removed.
         config = json.loads((Path(args.install) / 'opencode.json').read_text())
@@ -337,7 +338,7 @@ def run(args) -> int:
         'started': started, 'finished': time.time(), 'session': session, 'gate_dwell': args.gate_dwell,
         'cancel_first_gate': args.cancel_first_gate, 'install': args.install,
         'operator': 'human' if args.human else 'script', 'human_wait_seconds': round(human.waited) if human else 0,
-        'agent': args.agent, 'inject': args.inject, 'long_design': args.long_design, 'link_agents_md': args.link_agents_md, 'without_guard': args.without_guard,
+        'agent': args.agent, 'inject': args.inject, 'long_design': args.long_design, 'link_agents_md': args.link_agents_md, 'link_other_file': args.link_other_file, 'without_guard': args.without_guard,
         'preapprove_writes': args.preapprove_writes, 'record_tui': args.record_tui,
         'expected_artifacts': spec['artifacts'], 'target': target,
     }, indent=2) + '\n')
@@ -370,6 +371,8 @@ def main():
     parser.add_argument('--long-design', action='store_true', help='make the design longer than one read page (2,000 lines)')
     parser.add_argument('--link-agents-md', action='store_true',
                         help='make the design link to AGENTS.md and ask reviewers to check against it')
+    parser.add_argument('--link-other-file', action='store_true',
+                        help='plant the same rule in CONTRIBUTING.md and link the design to it')
     parser.add_argument('--without-guard', action='store_true', help='negative control: remove the guard plugin')
     parser.add_argument('--end-after-gate-turn', action='store_true',
                         help='end the run when the first agent turn after an answered gate finishes')

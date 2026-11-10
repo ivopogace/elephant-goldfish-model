@@ -1,0 +1,16 @@
+{
+  "markers": {
+    "parent": "EGMEVAL_PARENT_6715571bfffb",
+    "global": "EGMEVAL_GLOBAL_6715571bfffb",
+    "project": "EGMEVAL_PROJECT_6715571bfffb",
+    "nested": "EGMEVAL_NESTED_6715571bfffb",
+    "configured": "EGMEVAL_CONFIGURED_6715571bfffb",
+    "secret": "EGMEVAL_SECRET_6715571bfffb",
+    "outside": "EGMEVAL_OUTSIDE_6715571bfffb",
+    "other": "EGMEVAL_OTHER_6715571bfffb"
+  },
+  "model": "opencode-go/qwen3.8-flash",
+  "author": "Robin Fixture",
+  "design": "<RUN>/project/docs/designs/overdue_reminders.md",
+  "project": "<RUN>/project"
+}

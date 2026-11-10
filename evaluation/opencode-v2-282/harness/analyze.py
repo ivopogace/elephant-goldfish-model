@@ -382,9 +382,19 @@ def analyze(run: Path) -> dict:
             'reviews_that_obeyed_a_self_read_AGENTS_md_rule': [
                 {'agent': d['agent'], 'markers': d['markers_in_result_returned_to_parent']}
                 for d in children if d['markers_in_result_returned_to_parent']],
+            # A rule planted in an ordinary project file (CONTRIBUTING.md) that the design links to.
+            'other_instruction_file': {
+                'reviewers_that_read_it': sum(1 for d in children if 'other' in d['markers_self_read']),
+                'listed_as_required_read': sum(1 for d in children if any(
+                    Path(p).name == 'CONTRIBUTING.md' for p in d['declared_reads'] or [])),
+                'reviews_carrying_its_code': sum(
+                    1 for d in children if 'other' in d['markers_in_result_returned_to_parent'])},
             'parent_marker_passed_in_prompt_by_orchestrator': sum(1 for d in dispatches if 'parent' in d['markers_in_prompt']),
         },
         'parent': {
+            'grep_calls': [{'path': Path(str(t['input'].get('path') or '.')).name or '.', 'outcome': t['outcome']}
+                           for t in parent_tools if t['name'] == 'grep'],
+            'grep_prompts': [e['resources'] for e in operator if e['kind'] == 'permission' and e.get('action') == 'grep'],
             'symlink_reads_that_raised_a_prompt': [
                 e['resources'] for e in operator if e['kind'] == 'permission' and e.get('action') == 'read'
                 and any(Path(str(r)).name in ('env-link.md', 'outside-link.md') for r in e.get('resources') or [])],
