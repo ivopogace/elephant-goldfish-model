@@ -1,0 +1,83 @@
+{
+  "label": "EGM · OpenCode V2 adapter, candidate b6c8913 · OpenCode 2.2.6 · LongCat 2.5 · fake test data",
+  "speed": 1.0,
+  "pronounce": {
+    "OpenCode": "Open Code",
+    "V2": "version two",
+    "AGENTS.md": "agents dot M D",
+    ".env": "dot env",
+    "LongCat 2.5": "Long Cat two point five",
+    "EGM": "E G M",
+    "glob": "glob"
+  },
+  "segments": [
+    {
+      "title": "Does the OpenCode V2 adapter keep its promises?",
+      "lines": [
+        "Elephant Goldfish Model · issue #282 · candidate commit b6c8913",
+        "OpenCode 2.2.6 · model LongCat 2.5 through OpenCode Go",
+        "One representative run: an EGM brainstorm about a fictional tool library",
+        "The terminal recording is real. Waiting time is fast-forwarded."
+      ],
+      "footer": "Independent evaluation. Approvals in this run were given by a script, not by a person.",
+      "say": "This is an independent check of the experimental OpenCode V2 adapter for the Elephant Goldfish Model, using a real model. | You are watching one brainstorm run on fake data, with the waiting sped up."
+    },
+    {
+      "from": "start",
+      "to": "turn1_end+2",
+      "say": "The operator asks for a brainstorm about a made-up tool library. | The orchestrator reads the adapter guide and the skill. Then it asks its questions in plain chat, and starts no reviewers yet."
+    },
+    {
+      "from": "reply1-2",
+      "to": "gate1_seen-0.5",
+      "say": "After the operator answers, it writes down a working hypothesis."
+    },
+    {
+      "from": "gate1_seen-0.5",
+      "to": "gate1_replied+1.5",
+      "pad": 0.2,
+      "say": "Then it stops at a readiness gate. While the question waits, no request goes to the model."
+    },
+    {
+      "from": "gate1_replied+1.5",
+      "to": "reviewers_start+25",
+      "say": "Once the gate is approved, it dispatches seven Goldfish reviewers. | Each one starts in a new session, and sees only its own prompt and the task."
+    },
+    {
+      "from": "reviewers_start+25",
+      "to": "reviewers_done+2",
+      "say": "The guard plugin leaves reviewers two tools only: read and glob. | In this run, reviewers tried to open a fake .env file, and links that lead outside the project. Each of those reads was denied."
+    },
+    {
+      "from": "reviewers_done+2",
+      "to": "turn2_end+2",
+      "say": "The guard also checks that every reviewer read its persona file to the end. | Then the orchestrator writes the concepts brief itself."
+    },
+    {
+      "from": "reply2-2",
+      "to": "gate2_seen-0.5",
+      "say": "The operator accepts the brief."
+    },
+    {
+      "from": "gate2_seen-0.5",
+      "to": "gate2_replied+2",
+      "pad": 0.2,
+      "say": "A second gate asks what happens next. The operator picks drafting, and the brainstorm ends."
+    },
+    {
+      "title": "Result across 12 live runs",
+      "lines": [
+        "+ Install matches commit b6c8913. Scripted probe and unit tests pass.",
+        "+ Brainstorm, draft and review ran to the end: 6 workflow runs, 28 gates.",
+        "+ 45 reviewer sessions: fresh context, read and glob only, no writes.",
+        "+ 26 reviewer attempts to reach the fake .env or leave the project: denied.",
+        "- 21 of 45 reviews followed a rule from AGENTS.md the reviewer opened itself.",
+        "- The orchestrator read the fake .env through a symlink, with no prompt.",
+        "? Real human approvals and the incomplete-review path: not verified."
+      ],
+      "footer": "Details and traces: evaluation/opencode-v2-282/REPORT.md",
+      "pad": 1.2,
+      "say": "Across twelve live runs, the guard kept its promises. Forty-five reviewer sessions started fresh and stayed read-only, and every attempt to reach the fake secrets or leave the project was denied. | Two gaps remain. Reviewers opened the project's AGENTS.md on their own, and in twenty-one of forty-five reviews they followed its rule. | And the orchestrator itself read the fake secrets through a symbolic link, with no prompt. | Approvals came from a script, so real human pauses are still unverified."
+    }
+  ]
+}

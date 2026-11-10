@@ -1,0 +1,42 @@
+{
+  "ses_e3d8afa57ffemM2up4vppUj8Ts": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e3d8f4f91ffe2m7l54xCtPKwr6",
+    "title": "Brainstorm: inventive lens"
+  },
+  "ses_e3d8afa59ffeVLqh4p17p39wQF": {
+    "agent": "egm-structural",
+    "parentID": "ses_e3d8f4f91ffe2m7l54xCtPKwr6",
+    "title": "Brainstorm: tech debt lens"
+  },
+  "ses_e3d8afa5bffemow18V1F2My3R8": {
+    "agent": "egm-codebase-details",
+    "parentID": "ses_e3d8f4f91ffe2m7l54xCtPKwr6",
+    "title": "Brainstorm: observability lens"
+  },
+  "ses_e3d8afa79ffeRaRofUrfcmUep0": {
+    "agent": "egm-implementation-readiness",
+    "parentID": "ses_e3d8f4f91ffe2m7l54xCtPKwr6",
+    "title": "Brainstorm: migration lens"
+  },
+  "ses_e3d8afa7dffeI2J136fRiUosAA": {
+    "agent": "egm-comprehension",
+    "parentID": "ses_e3d8f4f91ffe2m7l54xCtPKwr6",
+    "title": "Brainstorm: UX lens"
+  },
+  "ses_e3d8afa8dffe0J3C6vO352EQss": {
+    "agent": "egm-design",
+    "parentID": "ses_e3d8f4f91ffe2m7l54xCtPKwr6",
+    "title": "Brainstorm: cost lens"
+  },
+  "ses_e3d8afa91ffeuQHfn42i67J30I": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e3d8f4f91ffe2m7l54xCtPKwr6",
+    "title": "Brainstorm: YAGNI lens"
+  },
+  "ses_e3d8f4f91ffe2m7l54xCtPKwr6": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "lendr overdue reminders"
+  }
+}

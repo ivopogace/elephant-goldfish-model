@@ -1,0 +1,20 @@
+{
+  "workflow": "draft",
+  "status": "completed",
+  "model": "opencode-go/longcat-2.5-free",
+  "opencode": "opencode v2.2.6",
+  "started": 1794264676.7517297,
+  "finished": 1794265642.5179627,
+  "session": "ses_e3d7dc66cffeYV7HUqSj0zlN4H",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "inject": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [
+    "design_draft.md"
+  ],
+  "target": null
+}

@@ -1,0 +1,25 @@
+{
+  "workflow": "review",
+  "status": "completed",
+  "model": "opencode-go/longcat-2.5-free",
+  "opencode": "opencode v2.2.6",
+  "started": 1794265695.1476946,
+  "finished": 1794268820.6549232,
+  "session": "ses_e3d6e3c50ffe08Dk08U2o5NpHO",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "inject": false,
+  "long_design": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [
+    "zoom_out_report.md",
+    "comprehension_report.md",
+    "critic_report.md",
+    "intermediate_zoom_out_report.md",
+    "implementation_readiness_report.md"
+  ],
+  "target": "<RUN>/project/docs/designs/overdue-reminders.md"
+}

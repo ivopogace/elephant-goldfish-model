@@ -1,0 +1,18 @@
+{
+  "workflow": "parent_symlink_probe",
+  "status": "completed",
+  "model": "opencode-go/longcat-2.5-free",
+  "opencode": "opencode v2.2.6",
+  "started": 1794264708.6642258,
+  "finished": 1794264723.3732033,
+  "session": "ses_e3d7d49c4ffeoW6pIi8s76LIku",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "inject": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [],
+  "target": null
+}

@@ -1,0 +1,42 @@
+{
+  "ses_e3d86bf63ffetHa3eiCT5yMP10": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+    "title": "Catalyst lens brainstorm review"
+  },
+  "ses_e3d86bf65ffe3knfoGgpmRvmbO": {
+    "agent": "egm-structural",
+    "parentID": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+    "title": "Structural lens brainstorm review"
+  },
+  "ses_e3d86bf67ffeUF6K1sEmXLujbI": {
+    "agent": "egm-implementation-readiness",
+    "parentID": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+    "title": "Readiness lens brainstorm review"
+  },
+  "ses_e3d86bf6bffe7q7dLQlc1RANay": {
+    "agent": "egm-comprehension",
+    "parentID": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+    "title": "Comprehension lens brainstorm review"
+  },
+  "ses_e3d86bf6fffeQwEvCrlwD0qDwg": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+    "title": "Zoom-out lens brainstorm review"
+  },
+  "ses_e3d86bf73ffeZ30HiuYkI0r9Dn": {
+    "agent": "egm-codebase-details",
+    "parentID": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+    "title": "Codebase lens brainstorm review"
+  },
+  "ses_e3d86bf78ffelP0UgJfeajJgTq": {
+    "agent": "egm-design",
+    "parentID": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+    "title": "Design lens brainstorm review"
+  },
+  "ses_e3d8f4855ffeVM8pu01GLp8l9t": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "Overdue reminders for lendr"
+  }
+}

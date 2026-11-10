@@ -1,0 +1,57 @@
+{
+  "install": {
+    "identity": {
+      "name": "egm",
+      "version": "0.1.1",
+      "host_version": "2.2.6",
+      "interface": "v2",
+      "status": "experimental"
+    },
+    "files_recorded": 94,
+    "files_present": 94,
+    "hash_mismatches": [],
+    "unrecorded_files": [],
+    "config_sha256_matches": true,
+    "commands": [
+      "egm-bootstrap",
+      "egm-brainstorm",
+      "egm-draft",
+      "egm-drift-report",
+      "egm-resolve",
+      "egm-review",
+      "egm-review-loop"
+    ],
+    "reviewers": [
+      "egm-codebase-details",
+      "egm-comprehension",
+      "egm-design",
+      "egm-implementation-readiness",
+      "egm-inventive-catalyst",
+      "egm-structural",
+      "egm-style",
+      "egm-zoom-out"
+    ],
+    "primary": [
+      "egm"
+    ],
+    "plugins": [
+      "plugin"
+    ],
+    "skill_links": [
+      "egm-bootstrap",
+      "egm-brainstorm",
+      "egm-draft",
+      "egm-drift-report",
+      "egm-resolve",
+      "egm-review",
+      "egm-review-loop"
+    ]
+  },
+  "source_commit": "b6c8913080a290adacb3ef479eaf10cffc00bd47",
+  "source_clean": true,
+  "matches_fresh_install": {
+    "file_hashes_equal": true,
+    "config_equal_modulo_path": true
+  },
+  "ok": true
+}

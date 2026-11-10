@@ -1,0 +1,20 @@
+{
+  "workflow": "foreign_dispatch_probe",
+  "status": "completed",
+  "model": "opencode-go/longcat-2.5-free",
+  "opencode": "opencode v2.2.6",
+  "started": 1794266783.8765895,
+  "finished": 1794266820.595321,
+  "session": "ses_e3d5d9f78ffeN8B15PwZGfjhsK",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "agent": "build",
+  "inject": false,
+  "long_design": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [],
+  "target": null
+}

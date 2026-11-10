@@ -1,0 +1,18 @@
+{
+  "workflow": "brainstorm",
+  "status": "completed",
+  "model": "opencode-go/longcat-2.5-free",
+  "opencode": "opencode v2.2.6",
+  "started": 1794263529.3830485,
+  "finished": 1794265028.6466734,
+  "session": "ses_e3d8f4855ffeVM8pu01GLp8l9t",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "preapprove_writes": true,
+  "record_tui": true,
+  "expected_artifacts": [
+    "concepts_brief.md"
+  ],
+  "target": null
+}

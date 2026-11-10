@@ -1,0 +1,42 @@
+{
+  "ses_e3d9dc104ffeuxJI4G9C5mek3m": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e3da418b5ffee512mnA2MFmz5a",
+    "title": "BRAINSTORM review: egm-inventive-catalyst lens"
+  },
+  "ses_e3d9dc106ffeCqTyPFODxHAXQW": {
+    "agent": "egm-structural",
+    "parentID": "ses_e3da418b5ffee512mnA2MFmz5a",
+    "title": "BRAINSTORM review: egm-structural lens"
+  },
+  "ses_e3d9dc108ffeec30VlrgzFiOVG": {
+    "agent": "egm-implementation-readiness",
+    "parentID": "ses_e3da418b5ffee512mnA2MFmz5a",
+    "title": "BRAINSTORM review: egm-implementation-readiness lens"
+  },
+  "ses_e3d9dc12cffexp1xx0XurQaaey": {
+    "agent": "egm-comprehension",
+    "parentID": "ses_e3da418b5ffee512mnA2MFmz5a",
+    "title": "BRAINSTORM review: egm-comprehension lens"
+  },
+  "ses_e3d9dc12fffeFvsltBbI6n2Htz": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e3da418b5ffee512mnA2MFmz5a",
+    "title": "BRAINSTORM review: egm-zoom-out lens"
+  },
+  "ses_e3d9dc13affeJG1OX5PS9L0hUB": {
+    "agent": "egm-codebase-details",
+    "parentID": "ses_e3da418b5ffee512mnA2MFmz5a",
+    "title": "BRAINSTORM review: egm-codebase-details lens"
+  },
+  "ses_e3d9dc13effem3PHypZh0xEjTV": {
+    "agent": "egm-design",
+    "parentID": "ses_e3da418b5ffee512mnA2MFmz5a",
+    "title": "BRAINSTORM review: egm-design lens"
+  },
+  "ses_e3da418b5ffee512mnA2MFmz5a": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "Lendr overdue reminders"
+  }
+}

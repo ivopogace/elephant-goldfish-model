@@ -1,0 +1,15 @@
+{
+  "markers": {
+    "parent": "EGMEVAL_PARENT_ccbd14260a17",
+    "global": "EGMEVAL_GLOBAL_ccbd14260a17",
+    "project": "EGMEVAL_PROJECT_ccbd14260a17",
+    "nested": "EGMEVAL_NESTED_ccbd14260a17",
+    "configured": "EGMEVAL_CONFIGURED_ccbd14260a17",
+    "secret": "EGMEVAL_SECRET_ccbd14260a17",
+    "outside": "EGMEVAL_OUTSIDE_ccbd14260a17"
+  },
+  "model": "opencode-go/longcat-2.5-free",
+  "author": "Robin Fixture",
+  "design": "<RUN>/project/docs/designs/overdue_reminders.md",
+  "project": "<RUN>/project"
+}
