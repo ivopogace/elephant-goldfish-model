@@ -44,7 +44,30 @@ It is evaluation material, not part of the adapter. It changes nothing under `sk
 4. `analyze.py` turns the three records of a run into named checks; `summarize.py` puts
    several runs in one table.
 
-No person sat at the gates. The report says where that limits what was verified.
+No person sat at the gates in the reported runs. The report says where that limits what
+was verified.
+
+### A person at the gates
+
+`--human` hands every gate and every chat turn to a person and waits. Permission requests
+still follow the fixed allowlist. Waiting time does not count against `--timeout`.
+
+```sh
+python3 harness/driver.py review --human --output /absolute/new/run/dir
+```
+
+Started from a terminal, the driver prints each question and reads the answer. Started
+without one, it writes `pending.json` in the run directory and waits; answer from another
+shell:
+
+```sh
+python3 harness/answer.py /absolute/new/run/dir            # show the question
+python3 harness/answer.py /absolute/new/run/dir 1          # choose option 1
+python3 harness/answer.py /absolute/new/run/dir "my words" # write-in, or a chat reply
+```
+
+`cancel` dismisses a gate, `default` sends the scripted chat reply, `end` stops the run.
+The analysis then reports `gates_answered_by_a_person`.
 
 ## Repeat it
 

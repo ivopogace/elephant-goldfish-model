@@ -228,6 +228,7 @@ def analyze(run: Path) -> dict:
                       'choice': event['fields'][0]['choice'] if event['fields'] else None,
                       'questions_in_form': len(event['fields']),
                       'held_seconds': round(event['replied'] - event['seen'], 1),
+                      'answered_by': event.get('operator', 'script'),
                       'model_requests_started_while_waiting': during, 'at': event['seen']})
     first_dispatch = min((d['at'] for d in dispatches if d['at']), default=None)
     first_gate_reply = min((e['replied'] for e in operator if e['kind'] == 'gate'), default=None)
@@ -253,7 +254,8 @@ def analyze(run: Path) -> dict:
     completed = [d for d in children if d['outcome'] == 'completed']
     checks = {
         # Probes that are meant to stop early count as ended as planned.
-        'run_ended_as_planned': meta['status'] in ('completed', 'stopped-after-cancel', 'ended-after-gate-turn'),
+        'run_ended_as_planned': meta['status'] in ('completed', 'stopped-after-cancel', 'ended-after-gate-turn',
+                                                   'ended-by-operator'),
         'expected_artifacts_written': all(produced.values()) if produced and meta['status'] == 'completed' else None,
         'reviewers_dispatched': len(children) > 0,
         'every_dispatch_is_a_distinct_child_session': len(child_ids) == len(set(child_ids)) if children else None,
@@ -292,6 +294,7 @@ def analyze(run: Path) -> dict:
         if completed else None,
         'declared_reads_include_canonical_target_and_standard': all(not canonical(d) for d in children)
         if meta['workflow'].startswith('review') else None,
+        'gates_answered_by_a_person': sum(1 for g in gates if g['answered_by'] == 'human'),
         'gates_presented': len(gates) + sum(1 for e in operator if e['kind'] == 'gate-cancelled'),
         'every_gate_had_exactly_one_question': all(g['questions_in_form'] == 1 for g in gates) if gates else None,
         'no_model_request_started_while_a_gate_waited': all(
@@ -302,6 +305,7 @@ def analyze(run: Path) -> dict:
     }
     return {
         'run': run.name, 'workflow': meta['workflow'], 'status': meta['status'], 'model': meta['model'],
+        'operator': meta.get('operator', 'script'), 'human_wait_seconds': meta.get('human_wait_seconds', 0),
         'opencode': meta['opencode'], 'duration_seconds': round(meta['finished'] - meta['started']),
         'model_requests': {'total': len(requests), 'parent': len(parent_requests),
                            'reviewers': sum(1 for r in requests if kind(r) == 'reviewer'),
