@@ -1,0 +1,15 @@
+{
+  "markers": {
+    "parent": "EGMEVAL_PARENT_c307500af7d9",
+    "global": "EGMEVAL_GLOBAL_c307500af7d9",
+    "project": "EGMEVAL_PROJECT_c307500af7d9",
+    "nested": "EGMEVAL_NESTED_c307500af7d9",
+    "configured": "EGMEVAL_CONFIGURED_c307500af7d9",
+    "secret": "EGMEVAL_SECRET_c307500af7d9",
+    "outside": "EGMEVAL_OUTSIDE_c307500af7d9"
+  },
+  "model": "opencode-go/qwen3.8-flash",
+  "author": "Robin Fixture",
+  "design": null,
+  "project": "<RUN>/project"
+}

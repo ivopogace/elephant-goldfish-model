@@ -1,0 +1,42 @@
+{
+  "ses_e38430052ffeuv4H26IPPqy6wy": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e3845773affeQlNNcGG5UXwEW5",
+    "title": "Brainstorm: inventive lens"
+  },
+  "ses_e38430d39ffeGhzhUXMLNEW4Tt": {
+    "agent": "egm-structural",
+    "parentID": "ses_e3845773affeQlNNcGG5UXwEW5",
+    "title": "Brainstorm: structural lens"
+  },
+  "ses_e38431b26ffe4fhR4nJfkDvpiP": {
+    "agent": "egm-implementation-readiness",
+    "parentID": "ses_e3845773affeQlNNcGG5UXwEW5",
+    "title": "Brainstorm: readiness lens"
+  },
+  "ses_e38432813ffe4GfgZhENiwjxLF": {
+    "agent": "egm-comprehension",
+    "parentID": "ses_e3845773affeQlNNcGG5UXwEW5",
+    "title": "Brainstorm: comprehension lens"
+  },
+  "ses_e3843350affehCfJ6unL76WxOC": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e3845773affeQlNNcGG5UXwEW5",
+    "title": "Brainstorm: zoom-out lens"
+  },
+  "ses_e38434272ffexQuszhz40KrPpS": {
+    "agent": "egm-codebase-details",
+    "parentID": "ses_e3845773affeQlNNcGG5UXwEW5",
+    "title": "Brainstorm: codebase lens"
+  },
+  "ses_e384352c0ffeGMKco3eDRpTUt0": {
+    "agent": "egm-design",
+    "parentID": "ses_e3845773affeQlNNcGG5UXwEW5",
+    "title": "Brainstorm: design lens"
+  },
+  "ses_e3845773affeQlNNcGG5UXwEW5": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "Lendr overdue reminders"
+  }
+}

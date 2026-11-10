@@ -42,6 +42,42 @@ def declared_reads(prompt: str):
     return paths
 
 
+def normalize(record: dict) -> dict:
+    """Bring an Anthropic-style request into the chat-completions shape the checks read.
+
+    The system prompt becomes a system message, a user turn that only carries tool results
+    becomes a tool message, and tool definitions get the {'function': {'name': ...}} form.
+    """
+    request = record.get('request')
+    if not isinstance(request, dict) or 'system' not in request or record.get('path', '').startswith('/chat'):
+        return record
+    system = request.get('system')
+    text = system if isinstance(system, str) else '\n'.join(
+        block.get('text', '') for block in system or [] if isinstance(block, dict))
+    messages = [{'role': 'system', 'content': text}]
+    for message in request.get('messages', []):
+        content = message.get('content')
+        blocks = content if isinstance(content, list) else [{'type': 'text', 'text': content}]
+        results = [b for b in blocks if isinstance(b, dict) and b.get('type') == 'tool_result']
+        rest = [b for b in blocks if not (isinstance(b, dict) and b.get('type') == 'tool_result')]
+        for block in results:
+            messages.append({'role': 'tool', 'tool_call_id': block.get('tool_use_id'),
+                             'content': json.dumps(block.get('content'))})
+        if rest or not results:
+            words = '\n'.join(b.get('text', '') for b in rest if isinstance(b, dict) and b.get('type') == 'text')
+            entry = {'role': message.get('role'), 'content': words}
+            uses = [b for b in rest if isinstance(b, dict) and b.get('type') == 'tool_use']
+            if uses:
+                entry['tool_calls'] = [{'id': b.get('id'), 'function': {
+                    'name': b.get('name'), 'arguments': json.dumps(b.get('input'))}} for b in uses]
+            thoughts = [b for b in rest if isinstance(b, dict) and b.get('type') in ('thinking', 'redacted_thinking')]
+            if thoughts:
+                entry['reasoning_content'] = '\n'.join(str(b.get('thinking', '')) for b in thoughts)
+            messages.append(entry)
+    tools = [{'function': {'name': tool.get('name')}} for tool in request.get('tools', [])]
+    return {**record, 'request': {**request, 'messages': messages, 'tools': tools}}
+
+
 def tool_parts(export: dict):
     for message in export.get('messages', []):
         if message.get('type') != 'assistant':
@@ -90,7 +126,8 @@ def analyze(run: Path) -> dict:
     markers, project, install = fixture['markers'], Path(fixture['project']), Path(meta['install'])
     exports = {p.stem: json.loads(p.read_text()) for p in (run / 'sessions').glob('*.json')}
     exports = {sid: (e.get('data') or e) for sid, e in exports.items()}
-    requests = [json.loads(line) for line in (run / 'provider-requests.jsonl').read_text().split('\n') if line]
+    requests = [normalize(json.loads(line))
+                for line in (run / 'provider-requests.jsonl').read_text().split('\n') if line]
     operator = [json.loads(line) for line in (run / 'operator.jsonl').read_text().split('\n') if line]
     parent = meta['session']
     # OpenCode 2.2.6 sends the root session ID on reviewer requests too, so requests are

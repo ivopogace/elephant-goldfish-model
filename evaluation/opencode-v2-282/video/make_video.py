@@ -48,6 +48,12 @@ def anchors(run: Path) -> dict:
     replies = [e for e in operator if e['kind'] == 'chat-reply']
     for index, reply in enumerate(replies, 1):
         at[f'reply{index}'] = reply['at'] - start
+    shown = [e for e in operator if e['kind'] == 'permission-shown']
+    answered = [e for e in operator if e['kind'] == 'permission']
+    for index, event in enumerate(shown, 1):
+        at[f'prompt{index}_shown'] = event['at'] - start
+    for index, event in enumerate(answered, 1):
+        at[f'prompt{index}_answered'] = event['at'] - start
     created = [e['created'] / 1000 - start for e in events if e['type'] == 'session.created'
                and (e.get('data') or {}).get('sessionID') != session]
     done = [e['created'] / 1000 - start for e in events if e['type'] == 'session.execution.succeeded'
@@ -159,14 +165,17 @@ def main():
     parser.add_argument('--narration', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--work', required=True, help='directory for intermediate audio')
+    parser.add_argument('--clip', action='append', default=[], metavar='NAME=RUNDIR',
+                        help='another recorded run; a segment uses it with "clip": NAME')
     parser.add_argument('--preview', help='write one PNG per segment here instead of the video')
     args = parser.parse_args()
     run, work = Path(args.run), Path(args.work)
     work.mkdir(parents=True, exist_ok=True)
     script = json.loads(Path(args.narration).read_text())
-    at = anchors(run)
-    print('anchors', json.dumps({k: round(v, 1) for k, v in at.items()}))
-    columns, rows, cast = termrender.load(str(run / 'tui.cast'))
+    clips = {'': run, **{name: Path(path) for name, path in (item.split('=', 1) for item in args.clip)}}
+    marks = {name: anchors(path) for name, path in clips.items()}
+    for name, at in marks.items():
+        print('anchors', name or 'main', json.dumps({k: round(v, 1) for k, v in at.items()}))
 
     voice = tts.Kokoro()
     segments, clock, audio_parts, cues = [], 0.0, [], []
@@ -193,6 +202,7 @@ def main():
             offset += length + 0.28
         entry = {'start': clock, 'duration': duration, **segment}
         if 'from' in segment:
+            at = marks[segment.get('clip', '')]
             entry['a'], entry['b'] = resolve(segment['from'], at), resolve(segment['to'], at)
             entry['rate'] = (entry['b'] - entry['a']) / duration
         segments.append(entry)
@@ -207,19 +217,23 @@ def main():
     srt.write_text(''.join(f'{i}\n{stamp(a)} --> {stamp(min(b, total))}\n{text}\n\n'
                            for i, (a, b, text) in enumerate(cues, 1)))
 
-    terminal = termrender.Terminal(columns, rows)
-    position = 0  # next cast event to feed
+    class Player:
+        """One recording replayed forward; frames are redrawn only when the screen changed."""
 
-    def terminal_at(source_time: float) -> Image.Image:
-        nonlocal position, cached, cached_version
-        while position < len(cast) and cast[position][0] <= source_time:
-            terminal.feed(cast[position][1])
-            position += 1
-        if cached_version != terminal.version:
-            cached, cached_version = terminal.image(), terminal.version
-        return cached
+        def __init__(self, path: Path):
+            columns, rows, self.cast = termrender.load(str(path / 'tui.cast'))
+            self.terminal = termrender.Terminal(columns, rows)
+            self.position, self.cached, self.version = 0, None, -1
 
-    cached, cached_version = None, -1
+        def at(self, source_time: float) -> Image.Image:
+            while self.position < len(self.cast) and self.cast[self.position][0] <= source_time:
+                self.terminal.feed(self.cast[self.position][1])
+                self.position += 1
+            if self.version != self.terminal.version:
+                self.cached, self.version = self.terminal.image(), self.terminal.version
+            return self.cached
+
+    players = {name: Player(path) for name, path in clips.items()}
     cards = {}
     encoder = None
     if not args.preview:
@@ -238,17 +252,20 @@ def main():
         segment = segments[index]
         local = now - segment['start']
         if 'a' in segment:
-            body = terminal_at(segment['a'] + local * segment['rate'])
+            player = players[segment.get('clip', '')]
+            body = player.at(segment['a'] + local * segment['rate'])
             rate = segment['rate']
             badge = f'▶▶ ×{rate:.0f}' if rate >= 1.5 else 'real time'
-            key = ('t', cached_version)
+            key = ('t', segment.get('clip', ''), player.version)
         else:
             if index not in cards:
                 cards[index] = card(segment['title'], segment['lines'], segment.get('footer', ''))
             body, badge, key = cards[index], '', ('c', index)
         caption = next((text for a, b, text in cues if a <= now < b), '')
         # Short cross-fade when the picture changes from a card to the terminal or back.
-        fade = min(1.0, local / 0.4) if index and ('a' in segment) != ('a' in segments[index - 1]) else 1.0
+        previous = segments[index - 1] if index else segment
+        changed = ('a' in segment) != ('a' in previous) or segment.get('clip', '') != previous.get('clip', '')
+        fade = min(1.0, local / 0.4) if index and changed else 1.0
         key = (*key, caption, badge, round(fade, 2))
         if key != last_key:
             frame = compose(body, caption, badge, script.get('label', ''))

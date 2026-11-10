@@ -204,6 +204,9 @@ def run(args) -> int:
                 continue
             for request in permissions:
                 decision, why = permission_decision(request, project, session)
+                if args.permission_dwell:  # Keep the prompt on screen long enough to be read in a recording.
+                    log('permission-shown', action=request.get('action'), resources=request.get('resources'))
+                    time.sleep(args.permission_dwell)
                 log('permission', session=request['sessionID'], action=request.get('action'),
                     resources=request.get('resources'), decision=decision, why=why)
                 try:
@@ -359,6 +362,8 @@ def main():
     parser.add_argument('--max-chat-turns', type=int, default=12)
     parser.add_argument('--cancel-first-gate', action='store_true')
     parser.add_argument('--agent', default='egm', help='primary agent for the session')
+    parser.add_argument('--permission-dwell', type=float, default=0,
+                        help='seconds to leave a permission prompt open before the policy answers it')
     parser.add_argument('--human', action='store_true',
                         help='a person answers every gate and chat turn (terminal, or pending.json/answer.py)')
     parser.add_argument('--inject', action='store_true', help='plant hostile instructions in the design document')

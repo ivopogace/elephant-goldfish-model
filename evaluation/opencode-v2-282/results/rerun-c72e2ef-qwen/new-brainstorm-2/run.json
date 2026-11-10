@@ -1,0 +1,25 @@
+{
+  "workflow": "brainstorm",
+  "status": "completed",
+  "model": "opencode-go/qwen3.8-flash",
+  "opencode": "opencode v2.2.6",
+  "started": 1794352253.1216063,
+  "finished": 1794352705.7838044,
+  "session": "ses_e3845773affeQlNNcGG5UXwEW5",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/home/user/egm-runs/egm-c72e2ef",
+  "operator": "script",
+  "human_wait_seconds": 0,
+  "agent": "egm",
+  "inject": false,
+  "long_design": false,
+  "link_agents_md": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [
+    "concepts_brief.md"
+  ],
+  "target": null
+}

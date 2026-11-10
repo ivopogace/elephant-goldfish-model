@@ -1,0 +1,23 @@
+{
+  "workflow": "parent_symlink_probe",
+  "status": "completed",
+  "model": "opencode-go/qwen3.8-flash",
+  "opencode": "opencode v2.2.6",
+  "started": 1794352254.8702278,
+  "finished": 1794352270.5915594,
+  "session": "ses_e38457066ffeSYL54J5PqULJd4",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "operator": "script",
+  "human_wait_seconds": 0,
+  "agent": "egm",
+  "inject": false,
+  "long_design": false,
+  "link_agents_md": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [],
+  "target": null
+}

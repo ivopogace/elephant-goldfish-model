@@ -118,4 +118,16 @@ def foreign_dispatch_probe(state):
     }
 
 
-WORKFLOWS = {'foreign_dispatch_probe': foreign_dispatch_probe, 'parent_symlink_probe': parent_symlink_probe, 'review_stage5': review_stage5, 'brainstorm': brainstorm, 'draft': draft, 'review': review}
+def parent_symlink_demo(state):
+    """One symlink read, for recording: the prompt the guard raises is the thing to see."""
+    return {
+        'opening': ('Operator file check, not an EGM skill. Read env-link.md in the project root with the '
+                    'read tool and print its first line, or the error you got. Then stop.'),
+        'chat': lambda s: 'Stop.',
+        'form': lambda question, options, s: first(options, r'no|stop|cancel'),
+        'done': lambda s: True,
+        'artifacts': [],
+    }
+
+
+WORKFLOWS = {'parent_symlink_demo': parent_symlink_demo, 'foreign_dispatch_probe': foreign_dispatch_probe, 'parent_symlink_probe': parent_symlink_probe, 'review_stage5': review_stage5, 'brainstorm': brainstorm, 'draft': draft, 'review': review}

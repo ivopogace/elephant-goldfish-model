@@ -1,0 +1,57 @@
+{
+  "ses_e383685dcffeH5CcDkk1TR7L6t": {
+    "agent": "egm-style",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 9 style readiness review"
+  },
+  "ses_e3836999cffet1qdQUQlBO0TY9": {
+    "agent": "egm-codebase-details",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 9 codebase details review"
+  },
+  "ses_e3836b1beffe3apZZJaGhPsOCO": {
+    "agent": "egm-implementation-readiness",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 9 readiness review"
+  },
+  "ses_e383a44efffeg6oDc9S5DODp6F": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 8 intermediate zoom-out"
+  },
+  "ses_e383dbb59ffeWpLDiu8E3aujW0": {
+    "agent": "egm-style",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 7 style critic"
+  },
+  "ses_e383dcb80ffejHDnYAOnqS3FeR": {
+    "agent": "egm-structural",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 7 structural critic"
+  },
+  "ses_e383dde51ffeWQeBlJSOyUYvvn": {
+    "agent": "egm-design",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 7 design critic"
+  },
+  "ses_e38409dbdffe9ZuE9KKHjzvE9i": {
+    "agent": "egm-comprehension",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 6 comprehension test"
+  },
+  "ses_e3844020affenjH4bJhF4a2YNL": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 5 catalyst review"
+  },
+  "ses_e38441347ffexBDlQGJXgWG2fe": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e38457349ffeBis1RCPrK8X5xM",
+    "title": "Stage 5 zoom-out review"
+  },
+  "ses_e38457349ffeBis1RCPrK8X5xM": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "Review overdue reminders EGMEVAL_PARENT_63b639cb26ae"
+  }
+}

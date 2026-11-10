@@ -22,7 +22,7 @@ SAFE_HEADERS = {'x-opencode-session', 'x-opencode-session-id', 'x-session-id', '
 
 
 def summarize_stream(raw: bytes) -> dict:
-    """Reassemble an OpenAI-style SSE (or plain JSON) completion."""
+    """Reassemble an OpenAI-style or Anthropic-style SSE (or plain JSON) completion."""
     text, reasoning, calls, finish, usage, model = [], [], {}, None, None, None
     body = raw.decode('utf-8', 'replace')
     events = []
@@ -33,12 +33,45 @@ def summarize_stream(raw: bytes) -> dict:
             pass
     else:
         for line in body.split('\n'):
-            if line.startswith('data:') and line[5:].strip() not in ('', '[DONE]'):
+            if line.startswith('data:') and line[5:].strip() not in ('', '[DONE]'):  # 'event:' lines are redundant
                 try:
                     events.append(json.loads(line[5:]))
                 except ValueError:
                     pass
     for event in events:
+        # Anthropic-style stream (message_start, content_block_*, message_delta) or message.
+        kind = event.get('type')
+        if kind == 'message_start':
+            message = event.get('message') or {}
+            model, usage = message.get('model') or model, message.get('usage') or usage
+            continue
+        if kind == 'content_block_start':
+            block = event.get('content_block') or {}
+            if block.get('type') == 'tool_use':
+                calls[event.get('index', 0)] = {'id': block.get('id'), 'name': block.get('name', ''), 'arguments': ''}
+            continue
+        if kind == 'content_block_delta':
+            delta = event.get('delta') or {}
+            if delta.get('type') == 'text_delta':
+                text.append(delta.get('text', ''))
+            elif delta.get('type') == 'thinking_delta':
+                reasoning.append(delta.get('thinking', ''))
+            elif delta.get('type') == 'input_json_delta' and event.get('index', 0) in calls:
+                calls[event.get('index', 0)]['arguments'] += delta.get('partial_json', '')
+            continue
+        if kind == 'message_delta':
+            finish = (event.get('delta') or {}).get('stop_reason') or finish
+            usage = {**(usage or {}), **(event.get('usage') or {})}
+            continue
+        if kind == 'message' and isinstance(event.get('content'), list):
+            model, usage, finish = event.get('model') or model, event.get('usage') or usage, event.get('stop_reason')
+            for index, block in enumerate(event['content']):
+                if block.get('type') == 'text':
+                    text.append(block.get('text', ''))
+                elif block.get('type') == 'tool_use':
+                    calls[index] = {'id': block.get('id'), 'name': block.get('name', ''),
+                                    'arguments': json.dumps(block.get('input'))}
+            continue
         model = event.get('model') or model
         usage = event.get('usage') or usage
         for choice in event.get('choices') or []:
