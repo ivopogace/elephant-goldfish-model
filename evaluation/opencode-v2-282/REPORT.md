@@ -299,8 +299,8 @@ scenarios) pass.
 * **The model that showed the problem most.** LongCat followed the planted rule in 21 of 45
   reviews on the old candidate. DeepSeek read the file about as often (7 of 9 reviewers) but
   followed it less (2 of 9). The new candidate has not been run with LongCat.
-* **The guard's denial under pressure, more than once.** It fired once. In 24 of 26 sessions
-  the prompt alone kept reviewers away.
+* **The guard's denial under pressure, more than once.** It fired once. In 25 of 26 sessions
+  the reviewer never tried the file, so the prompt alone kept it away.
 * **Other instruction files.** The fix blocks `AGENTS.md` by name. The guide now says other
   project files can still carry instructions; I did not probe one.
 * **`grep`.** The guide now notes that the orchestrator's `grep` ignores the `.env` rules. Not
