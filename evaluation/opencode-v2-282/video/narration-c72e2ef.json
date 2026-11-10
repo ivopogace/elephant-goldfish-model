@@ -8,7 +8,8 @@
     ".env": "dot env",
     "DeepSeek": "Deep Seek",
     "EGM": "E G M",
-    "c72e2ef": "C seventy-two"
+    "c72e2ef": "C seventy-two",
+    "symlink": "sim link"
   },
   "segments": [
     {
@@ -78,7 +79,7 @@
       ],
       "footer": "Details and traces: evaluation/opencode-v2-282/REPORT.md",
       "pad": 1.2,
-      "say": "Across the runs on this candidate, two brainstorms and one full review completed, and every check passed. | Twenty-six reviewer sessions started fresh and stayed read-only. No read of AGENTS.md succeeded, and the one attempt was denied. | In a separate probe, the orchestrator asked before reading the fake secrets through a symbolic link. | Two things remain unverified: approvals came from a script, not a person, and the incomplete review path never fired."
+      "say": "Across the runs on this candidate, two brainstorms and one full review completed, and every check passed. | Twenty-six reviewer sessions started fresh and stayed read-only. No read of AGENTS.md succeeded, and the one attempt was denied. | In a separate probe, the orchestrator asked before reading the fake secrets through a symlink. | Two things remain unverified: approvals came from a script, not a person, and the incomplete review path never fired."
     }
   ]
 }
