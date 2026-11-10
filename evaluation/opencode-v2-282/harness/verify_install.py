@@ -30,7 +30,10 @@ def check(install: Path) -> dict:
         'reviewers': sorted(k for k, v in config.get('agents', {}).items() if v.get('mode') == 'subagent'),
         'primary': sorted(k for k, v in config.get('agents', {}).items() if v.get('mode') == 'primary'),
         'plugins': [Path(p['package']).name for p in config.get('plugins', [])],
-        'skill_links': sorted(p.name for p in (install / 'skills').iterdir() if p.is_symlink()),
+        # b6c8913 linked skills from <install>/skills; later candidates point V2 at the bundle's own directory.
+        'skill_links': sorted(p.name for p in (install / 'skills').iterdir() if p.is_symlink())
+        if (install / 'skills').is_dir() else [],
+        'skill_paths': config.get('skills', []),
     }
 
 

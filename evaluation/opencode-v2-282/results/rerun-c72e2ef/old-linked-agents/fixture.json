@@ -1,0 +1,15 @@
+{
+  "markers": {
+    "parent": "EGMEVAL_PARENT_9f753be27a27",
+    "global": "EGMEVAL_GLOBAL_9f753be27a27",
+    "project": "EGMEVAL_PROJECT_9f753be27a27",
+    "nested": "EGMEVAL_NESTED_9f753be27a27",
+    "configured": "EGMEVAL_CONFIGURED_9f753be27a27",
+    "secret": "EGMEVAL_SECRET_9f753be27a27",
+    "outside": "EGMEVAL_OUTSIDE_9f753be27a27"
+  },
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "author": "Robin Fixture",
+  "design": "<RUN>/project/docs/designs/overdue_reminders.md",
+  "project": "<RUN>/project"
+}

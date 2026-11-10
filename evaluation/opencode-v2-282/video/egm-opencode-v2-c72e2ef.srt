@@ -1,0 +1,96 @@
+1
+00:00:00,000 --> 00:00:06,873
+This is an independent check of the OpenCode V2 adapter for the Elephant Goldfish Model,
+
+2
+00:00:06,873 --> 00:00:10,195
+at candidate c72e2ef, using a real model.
+
+3
+00:00:10,355 --> 00:00:13,950
+You are watching one brainstorm run on fake data.
+
+4
+00:00:14,567 --> 00:00:19,362
+The operator asks for a brainstorm about a made-up tool library.
+
+5
+00:00:19,522 --> 00:00:25,267
+The orchestrator reads the guide and the skill, and asks its questions before any review.
+
+6
+00:00:25,867 --> 00:00:30,037
+After the answers, it writes down a working hypothesis.
+
+7
+00:00:30,633 --> 00:00:32,571
+It stops at the readiness gate.
+
+8
+00:00:32,571 --> 00:00:35,878
+Nothing goes to the model while the question waits.
+
+9
+00:00:36,233 --> 00:00:38,914
+Once approved, seven reviewers start.
+
+10
+00:00:38,914 --> 00:00:42,728
+Each gets a fresh session, with read and glob only.
+
+11
+00:00:43,333 --> 00:00:47,461
+The guard keeps reviewers away from the project's AGENTS.md,
+
+12
+00:00:47,461 --> 00:00:50,075
+so its instructions cannot steer them.
+
+13
+00:00:50,075 --> 00:00:52,603
+In this run, no reviewer opened it.
+
+14
+00:00:52,763 --> 00:00:56,883
+One reviewer tried the fake .env file, and was denied.
+
+15
+00:00:57,500 --> 00:01:01,370
+The orchestrator then writes the concepts brief itself.
+
+16
+00:01:01,967 --> 00:01:04,112
+The operator accepts it.
+
+17
+00:01:04,467 --> 00:01:08,937
+A second gate asks what happens next, and the brainstorm ends.
+
+18
+00:01:09,300 --> 00:01:14,596
+Across the runs on this candidate, two brainstorms and one full review completed,
+
+19
+00:01:14,596 --> 00:01:16,220
+and every check passed.
+
+20
+00:01:16,380 --> 00:01:21,104
+Twenty-six reviewer sessions started fresh and stayed read-only.
+
+21
+00:01:21,104 --> 00:01:25,875
+No read of AGENTS.md succeeded, and the one attempt was denied.
+
+22
+00:01:26,035 --> 00:01:31,430
+The orchestrator now asks before it reads the fake secrets through a symbolic link.
+
+23
+00:01:31,590 --> 00:01:36,687
+Two things remain unverified: approvals came from a script, not a person,
+
+24
+00:01:36,687 --> 00:01:39,810
+and the incomplete review path never fired.
+

@@ -331,6 +331,15 @@ def analyze(run: Path) -> dict:
             'reviewer_non_read_glob_calls': [c for d in dispatches for c in d['child_non_read_glob_calls']],
             'reviewer_denied_or_failed_calls': [c for c in reviewer_calls if c['outcome'] != 'completed'],
             'missing_canonical_reads': [{'agent': d['agent'], 'missing': canonical(d)} for d in children if canonical(d)],
+            # A fix that blocks AGENTS.md shows up as denied attempts; no attempts at all proves nothing.
+            'reviewer_AGENTS_md_reads': {
+                'attempted': sum(1 for c in reviewer_calls if Path(str(c['path'])).name.lower() == 'agents.md'),
+                'completed': sum(1 for c in reviewer_calls if Path(str(c['path'])).name.lower() == 'agents.md'
+                                 and c['outcome'] == 'completed'),
+                'denied': sum(1 for c in reviewer_calls if Path(str(c['path'])).name.lower() == 'agents.md'
+                              and c['outcome'] == 'denied'),
+                'reviewers_that_tried': sum(1 for d in children if any(
+                    Path(str(c['path'])).name.lower() == 'agents.md' for c in d['child_tool_calls']))},
             'reviewers_that_opened_an_AGENTS_md_themselves': sum(
                 1 for d in children if set(d['markers_self_read']) & {'project', 'nested'}),
             'reviews_that_obeyed_a_self_read_AGENTS_md_rule': [
@@ -339,6 +348,9 @@ def analyze(run: Path) -> dict:
             'parent_marker_passed_in_prompt_by_orchestrator': sum(1 for d in dispatches if 'parent' in d['markers_in_prompt']),
         },
         'parent': {
+            'symlink_reads_that_raised_a_prompt': [
+                e['resources'] for e in operator if e['kind'] == 'permission' and e.get('action') == 'read'
+                and any(Path(str(r)).name in ('env-link.md', 'outside-link.md') for r in e.get('resources') or [])],
             'reads_through_symlinks_without_a_prompt': [
                 t['input'].get('path') for t in parent_tools if t['name'] == 'read' and t['outcome'] == 'completed'
                 and Path(str(t['input'].get('path'))).name in ('env-link.md', 'outside-link.md')],

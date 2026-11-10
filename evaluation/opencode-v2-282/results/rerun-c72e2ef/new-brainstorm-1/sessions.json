@@ -1,0 +1,42 @@
+{
+  "ses_e38811a2bffeGl1suSbCh3Jt0P": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e388665a1ffeLm8yf8pt318Eo6",
+    "title": "Inventive catalyst brainstorm"
+  },
+  "ses_e38811a2fffer6UN1wERDRsmqU": {
+    "agent": "egm-structural",
+    "parentID": "ses_e388665a1ffeLm8yf8pt318Eo6",
+    "title": "Maintainability brainstorm"
+  },
+  "ses_e38811a31ffeTRiUHPyrqaAaYL": {
+    "agent": "egm-implementation-readiness",
+    "parentID": "ses_e388665a1ffeLm8yf8pt318Eo6",
+    "title": "Migration readiness brainstorm"
+  },
+  "ses_e3884e0f9ffee4GPxQDXpDzibj": {
+    "agent": "egm-comprehension",
+    "parentID": "ses_e388665a1ffeLm8yf8pt318Eo6",
+    "title": "UX ergonomics brainstorm"
+  },
+  "ses_e3884e0fcffeZyTf0W8916Ju8H": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e388665a1ffeLm8yf8pt318Eo6",
+    "title": "YAGNI brainstorm review"
+  },
+  "ses_e3884e103ffehlOaTAOivv0Mxi": {
+    "agent": "egm-codebase-details",
+    "parentID": "ses_e388665a1ffeLm8yf8pt318Eo6",
+    "title": "Codebase details brainstorm"
+  },
+  "ses_e3884e106ffexOTIqyt4OUllxI": {
+    "agent": "egm-design",
+    "parentID": "ses_e388665a1ffeLm8yf8pt318Eo6",
+    "title": "Design brainstorm review"
+  },
+  "ses_e388665a1ffeLm8yf8pt318Eo6": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "Overdue reminders for lendr"
+  }
+}

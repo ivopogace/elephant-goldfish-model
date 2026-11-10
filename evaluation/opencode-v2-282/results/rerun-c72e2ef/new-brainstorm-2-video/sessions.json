@@ -1,0 +1,42 @@
+{
+  "ses_e3883a532ffeUJ1X9cycoYFoLx": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e3885176dffecC5wxbl1Xwl7LY",
+    "title": "Inventive catalyst brainstorm"
+  },
+  "ses_e3883a535ffeLNvMlyiK8942SS": {
+    "agent": "egm-structural",
+    "parentID": "ses_e3885176dffecC5wxbl1Xwl7LY",
+    "title": "Structural brainstorm review"
+  },
+  "ses_e3883a537ffe5h2WO93P6kx693": {
+    "agent": "egm-implementation-readiness",
+    "parentID": "ses_e3885176dffecC5wxbl1Xwl7LY",
+    "title": "Readiness brainstorm"
+  },
+  "ses_e3883a53dffeLu7Y3N0hxdu88u": {
+    "agent": "egm-comprehension",
+    "parentID": "ses_e3885176dffecC5wxbl1Xwl7LY",
+    "title": "Comprehension brainstorm"
+  },
+  "ses_e3883a542ffebYU2l1NGm89VFl": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e3885176dffecC5wxbl1Xwl7LY",
+    "title": "Zoom out brainstorm review"
+  },
+  "ses_e3883a547ffe124uStAofXkktX": {
+    "agent": "egm-codebase-details",
+    "parentID": "ses_e3885176dffecC5wxbl1Xwl7LY",
+    "title": "Codebase details brainstorm"
+  },
+  "ses_e3883a54dffeKZ01FA60AkyvNo": {
+    "agent": "egm-design",
+    "parentID": "ses_e3885176dffecC5wxbl1Xwl7LY",
+    "title": "Design brainstorm review"
+  },
+  "ses_e3885176dffecC5wxbl1Xwl7LY": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "Overdue reminders for lendr"
+  }
+}

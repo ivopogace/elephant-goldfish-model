@@ -1,0 +1,24 @@
+{
+  "workflow": "brainstorm",
+  "status": "completed",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "opencode": "opencode v2.2.6",
+  "started": 1794347997.747449,
+  "finished": 1794348309.395387,
+  "session": "ses_e388665c9ffe2xHFjnqdg2wMZ8",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "operator": "script",
+  "human_wait_seconds": 0,
+  "agent": "egm",
+  "inject": false,
+  "long_design": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [
+    "concepts_brief.md"
+  ],
+  "target": null
+}

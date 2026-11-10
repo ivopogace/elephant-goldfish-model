@@ -6,6 +6,7 @@ candidate commit `b6c8913` on `Israel-Kli/elephant-goldfish-model`, OpenCode 2.2
 real model (LongCat 2.5 through OpenCode Go).
 
 * [`REPORT.md`](REPORT.md): results against the acceptance criteria of #282.
+* [`results/rerun-c72e2ef/`](results/rerun-c72e2ef): the rerun on the author's fix commit.
 * [`results/`](results): per-run analysis, the scripted operator's log, the files each
   workflow wrote, and sanitized traces.
 * [`harness/`](harness): the scripts that produced the results.

@@ -28,6 +28,8 @@ def main():
             'reviewer_calls_denied': sum(v for k, v in c['reviewer_tool_calls'].items() if k != 'completed'),
             'reviewer_calls_other_tools': len(c['reviewer_non_read_glob_calls']),
             'reviewers_that_opened_agents_md': c['reviewers_that_opened_an_AGENTS_md_themselves'],
+            'agents_md_reads_denied': c.get('reviewer_AGENTS_md_reads', {}).get('denied', 0),
+            'agents_md_reads_completed': c.get('reviewer_AGENTS_md_reads', {}).get('completed', 0),
             'reviews_carrying_agents_md_code': len(c['reviews_that_obeyed_a_self_read_AGENTS_md_rule']),
             'parent_symlink_reads': len(a['parent']['reads_through_symlinks_without_a_prompt']),
             'failed_checks': sorted(k for k, v in checks.items() if v is False),
@@ -45,7 +47,8 @@ def main():
     Path(args.json).write_text(json.dumps({'runs': rows, 'totals': totals, 'checks': matrix}, indent=2) + '\n')
     columns = ['run', 'workflow', 'status', 'minutes', 'model_requests', 'gates', 'dispatches', 'reviews_completed',
                'rejected_before_start', 'guard_incomplete_notices', 'reviewer_calls_denied',
-               'reviewer_calls_other_tools', 'reviews_carrying_agents_md_code', 'parent_symlink_reads']
+               'reviewer_calls_other_tools', 'agents_md_reads_completed', 'agents_md_reads_denied',
+               'reviews_carrying_agents_md_code', 'parent_symlink_reads']
     lines = ['| ' + ' | '.join(c.replace('_', ' ') for c in columns) + ' |', '|' + ' --- |' * len(columns)]
     lines += ['| ' + ' | '.join(str(r[c]) for c in columns) + ' |' for r in rows]
     lines += ['| ' + ' | '.join(['**total**', '', ''] + [str(totals.get(c, '')) for c in columns[3:]]) + ' |', '']

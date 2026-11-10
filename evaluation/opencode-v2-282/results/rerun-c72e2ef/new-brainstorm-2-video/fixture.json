@@ -1,0 +1,15 @@
+{
+  "markers": {
+    "parent": "EGMEVAL_PARENT_446a7be15c08",
+    "global": "EGMEVAL_GLOBAL_446a7be15c08",
+    "project": "EGMEVAL_PROJECT_446a7be15c08",
+    "nested": "EGMEVAL_NESTED_446a7be15c08",
+    "configured": "EGMEVAL_CONFIGURED_446a7be15c08",
+    "secret": "EGMEVAL_SECRET_446a7be15c08",
+    "outside": "EGMEVAL_OUTSIDE_446a7be15c08"
+  },
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "author": "Robin Fixture",
+  "design": null,
+  "project": "<RUN>/project"
+}

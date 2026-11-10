@@ -1,0 +1,236 @@
+{
+  "head": "c72e2ef898c62a7b8ffa3cc6b8f4112e7b5b9fa7",
+  "opencode": "opencode v2.2.6",
+  "model": "scripted local mock",
+  "scenarios": [
+    {
+      "scenario": "guarded",
+      "checks": {
+        "review_completed": true,
+        "reviewer_tools_read_glob_only": true,
+        "no_parent_or_instruction_context": true,
+        "no_secret_or_outside_content": true,
+        "required_reads_completed": true,
+        "env_read_denied": true,
+        "env_symlink_denied": true,
+        "outside_symlink_denied": true,
+        "outside_read_denied": true,
+        "outside_absent_read_denied": true,
+        "agents_md_read_denied": true,
+        "missing_bundle_file_not_denied": true,
+        "outside_symlink_glob_blocked": true,
+        "write_shell_skill_unavailable": true,
+        "no_mutation": true,
+        "resume_starts_fresh_child": true,
+        "brainstorm_completed": true,
+        "nested_agents_md_read_allowed": true,
+        "parent_symlink_reads_asked": true
+      },
+      "observations": {
+        "subagent_calls": [
+          {
+            "input": {
+              "agent": "egm-zoom-out",
+              "description": "Probe reviewer",
+              "prompt": "Mode: REVIEW. Review <TMP>/project/docs/target.md.\n\n**EGM required reads:**\n\n- `<TMP>/install/bundle/agents/zoom_out.md`\n- `<TMP>/project/docs/target.md`\n- `<TMP>/install/bundle/resources/document_standards/zoom-out-standard.md`"
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "input": {
+              "agent": "egm-zoom-out",
+              "description": "Probe brainstorm reviewer",
+              "prompt": "Mode: `BRAINSTORM`. Concept: a CLI that counts lines.\n\nEGM required reads:\n",
+              "sessionID": "ses_e3886e80dffeBReWfxU0x4dgKF",
+              "background": true
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "child_sessions": [
+          "ses_e3886e80dffeBReWfxU0x4dgKF",
+          "ses_e3886e49fffe78vuB7zkjOOm1L"
+        ],
+        "child_tools": [
+          "glob",
+          "read"
+        ],
+        "leaked_markers": [],
+        "secrets_seen": [],
+        "reads": {
+          "<TMP>/install/bundle/agents/zoom_out.md": "completed",
+          "docs/target.md": "completed",
+          "<TMP>/install/bundle/resources/document_standards/zoom-out-standard.md": "completed",
+          "<TMP>/project/.env": "denied",
+          "<TMP>/project/alias.md": "denied",
+          "<TMP>/project/reference.md": "denied",
+          "<TMP>/outside/private.md": "denied",
+          "<TMP>/outside/absent.md": "denied",
+          "<TMP>/project/sub/notes.md": "completed",
+          "<TMP>/project/AGENTS.md": "denied",
+          "<TMP>/install/bundle/agents/missing/absent.md": "error: tool.execution"
+        },
+        "other_tools": {
+          "glob": "error: unknown",
+          "write": "unavailable",
+          "shell": "unavailable",
+          "skill": "unavailable"
+        }
+      }
+    },
+    {
+      "scenario": "incomplete",
+      "checks": {
+        "incomplete_notice": true,
+        "findings_withheld": true
+      },
+      "observations": {
+        "subagent_calls": [
+          {
+            "input": {
+              "agent": "egm-zoom-out",
+              "description": "Probe reviewer",
+              "prompt": "Mode: REVIEW. Review <TMP>/project/docs/target.md.\n\n**EGM required reads:**\n\n- `<TMP>/install/bundle/agents/zoom_out.md`\n- `<TMP>/project/docs/target.md`\n- `<TMP>/install/bundle/resources/document_standards/zoom-out-standard.md`"
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "child_sessions": [
+          "ses_e3886d229fferwhvuQ8v1fOIhZ"
+        ],
+        "child_tools": [
+          "glob",
+          "read"
+        ],
+        "leaked_markers": [],
+        "secrets_seen": [],
+        "reads": {
+          "<TMP>/install/bundle/agents/zoom_out.md": "completed",
+          "<TMP>/project/docs/target.md": "completed"
+        },
+        "other_tools": {}
+      }
+    },
+    {
+      "scenario": "undeclared",
+      "checks": {
+        "dispatch_rejected": true,
+        "no_reviewer_started": true
+      },
+      "observations": {
+        "subagent_calls": [
+          {
+            "input": {
+              "agent": "egm-zoom-out",
+              "description": "Probe reviewer",
+              "prompt": "Mode: REVIEW. Review <TMP>/project/docs/target.md."
+            },
+            "status": "error",
+            "error": "EGM: end the reviewer prompt with \"EGM required reads:\" followed by one \"- <absolute path>\" line for each file the stage requires the reviewer to read (target, standards, supplied reports); leave the list empty if there are none."
+          }
+        ],
+        "child_sessions": [
+          null
+        ],
+        "child_tools": [],
+        "leaked_markers": [],
+        "secrets_seen": [],
+        "reads": {},
+        "other_tools": {}
+      }
+    },
+    {
+      "scenario": "unguarded",
+      "checks": {
+        "dispatch_rejected": true,
+        "no_reviewer_started": true
+      },
+      "observations": {
+        "subagent_calls": [
+          {
+            "input": {
+              "agent": "egm-zoom-out",
+              "description": "Probe reviewer",
+              "prompt": "Mode: REVIEW. Review <TMP>/project/docs/target.md.\n\n**EGM required reads:**\n\n- `<TMP>/install/bundle/agents/zoom_out.md`\n- `<TMP>/project/docs/target.md`\n- `<TMP>/install/bundle/resources/document_standards/zoom-out-standard.md`"
+            },
+            "status": "error",
+            "error": "Permission denied: subagent"
+          }
+        ],
+        "child_sessions": [
+          null
+        ],
+        "child_tools": [],
+        "leaked_markers": [],
+        "secrets_seen": [],
+        "reads": {},
+        "other_tools": {}
+      }
+    },
+    {
+      "scenario": "widened",
+      "checks": {
+        "review_completed": true,
+        "reviewer_tools_read_glob_only": true,
+        "no_parent_or_instruction_context": true,
+        "no_secret_or_outside_content": true,
+        "required_reads_completed": true,
+        "env_read_denied": true,
+        "env_symlink_denied": true,
+        "outside_symlink_denied": true,
+        "outside_read_denied": true,
+        "outside_absent_read_denied": true,
+        "agents_md_read_denied": true,
+        "missing_bundle_file_not_denied": true,
+        "outside_symlink_glob_blocked": true,
+        "write_shell_skill_unavailable": true,
+        "no_mutation": true
+      },
+      "observations": {
+        "subagent_calls": [
+          {
+            "input": {
+              "agent": "egm-zoom-out",
+              "description": "Probe reviewer",
+              "prompt": "Mode: REVIEW. Review <TMP>/project/docs/target.md.\n\n**EGM required reads:**\n\n- `<TMP>/install/bundle/agents/zoom_out.md`\n- `<TMP>/project/docs/target.md`\n- `<TMP>/install/bundle/resources/document_standards/zoom-out-standard.md`"
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "child_sessions": [
+          "ses_e3886b2ddffeXqkcy0i1ztAoD8"
+        ],
+        "child_tools": [
+          "glob",
+          "read"
+        ],
+        "leaked_markers": [],
+        "secrets_seen": [],
+        "reads": {
+          "<TMP>/install/bundle/agents/zoom_out.md": "completed",
+          "<TMP>/project/docs/target.md": "completed",
+          "<TMP>/install/bundle/resources/document_standards/zoom-out-standard.md": "completed",
+          "<TMP>/project/.env": "denied",
+          "<TMP>/project/alias.md": "denied",
+          "<TMP>/project/reference.md": "denied",
+          "<TMP>/outside/private.md": "denied",
+          "<TMP>/outside/absent.md": "denied",
+          "<TMP>/project/sub/notes.md": "completed",
+          "<TMP>/project/AGENTS.md": "denied",
+          "<TMP>/install/bundle/agents/missing/absent.md": "error: tool.execution"
+        },
+        "other_tools": {
+          "glob": "error: unknown",
+          "write": "unavailable",
+          "shell": "unavailable",
+          "skill": "unavailable"
+        }
+      }
+    }
+  ],
+  "scope": "Scripted delegations and tool calls; not model behavior, full workflows, interactive approvals, or general isolation"
+}
