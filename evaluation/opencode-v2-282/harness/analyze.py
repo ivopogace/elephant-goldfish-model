@@ -305,7 +305,7 @@ def analyze(run: Path) -> dict:
     }
     return {
         'run': run.name, 'workflow': meta['workflow'], 'status': meta['status'], 'model': meta['model'],
-        'operator': meta.get('operator', 'script'), 'human_wait_seconds': meta.get('human_wait_seconds', 0),
+        'answered_by': meta.get('operator', 'script'), 'human_wait_seconds': meta.get('human_wait_seconds', 0),
         'opencode': meta['opencode'], 'duration_seconds': round(meta['finished'] - meta['started']),
         'model_requests': {'total': len(requests), 'parent': len(parent_requests),
                            'reviewers': sum(1 for r in requests if kind(r) == 'reviewer'),
