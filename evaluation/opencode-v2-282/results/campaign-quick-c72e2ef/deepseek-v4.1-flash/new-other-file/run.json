@@ -1,0 +1,26 @@
+{
+  "workflow": "review_stage5",
+  "status": "completed",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "opencode": "opencode v2.2.6",
+  "started": 1794358332.2553387,
+  "finished": 1794359282.1381721,
+  "session": "ses_e37e8b49cffeGaw0dOR9U2OwVc",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/home/user/egm-runs/campaign-test/install-c72e2ef",
+  "operator": "script",
+  "human_wait_seconds": 0,
+  "agent": "egm",
+  "inject": false,
+  "long_design": false,
+  "link_agents_md": false,
+  "link_other_file": true,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [
+    "zoom_out_report.md"
+  ],
+  "target": "<RUN>/project/docs/designs/overdue_reminders.md"
+}

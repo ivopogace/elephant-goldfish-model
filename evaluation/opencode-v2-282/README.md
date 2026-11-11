@@ -10,6 +10,8 @@ real model (LongCat 2.5 through OpenCode Go).
   [`results/rerun-c72e2ef-qwen/`](results/rerun-c72e2ef-qwen): the reruns on the author's fix
   commit with two models.
 * [`results/limit-probes/`](results/limit-probes): probes of two limits the guide lists.
+* [`results/campaign-quick-c72e2ef/`](results/campaign-quick-c72e2ef): a short repeat of the probes
+  made with `campaign.py --quick`.
 * [`results/agents-md-followed.md`](results/agents-md-followed.md): which reviews followed a
   planted rule and which only reported it.
 * [`results/`](results): per-run analysis, the scripted operator's log, the files each
@@ -74,6 +76,32 @@ python3 harness/answer.py /absolute/new/run/dir "my words" # write-in, or a chat
 
 `cancel` dismisses a gate, `default` sends the scripted chat reply, `end` stops the run.
 The analysis then reports `gates_answered_by_a_person`.
+
+## One command for a candidate commit
+
+`harness/campaign.py` does the whole sequence for any commit: check it out, install and
+verify it, run the candidate's unit tests and scripted probe, find each model's endpoint
+and check that it answers, run the live runs (and the same probes on an older install as a
+control), analyze, and print a summary table.
+
+```sh
+python3 harness/campaign.py \
+  --source /absolute/checkout/of/the/fork --commit <sha> \
+  --output /absolute/new/dir \
+  --model opencode-go/deepseek-v4.1-flash --model opencode-go/qwen3.8-flash \
+  --control-install /absolute/older/install \
+  --export results/<name>
+```
+
+* `--quick` runs only the short probes (symlink read, `grep`, a design that links to
+  `AGENTS.md`, a design that links to another file with a planted rule). Minutes, not an hour.
+* `--resume` continues in the same output directory after an interruption. Finished runs are
+  kept; a run that was cut off is started again.
+* `--human` runs brainstorm, draft and review in sequence with a person answering every gate,
+  instead of the scripted runs.
+* A model that returns no successful answer (rate limited, not offered) is reported and
+  skipped; the others still run.
+* The table is also written to `<output>/comment-table.md`.
 
 ## Repeat it
 

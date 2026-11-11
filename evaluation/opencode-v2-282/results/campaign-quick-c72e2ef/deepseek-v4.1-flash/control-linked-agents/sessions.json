@@ -1,0 +1,17 @@
+{
+  "ses_e37e84f93ffeDpkcbsUSbKtSZL": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e37e8afd5ffe4XsVWAltPk2BxI",
+    "title": "Stage 5 inventive catalyst review"
+  },
+  "ses_e37e84f96ffewOmB4KWWTiE0Wh": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e37e8afd5ffe4XsVWAltPk2BxI",
+    "title": "Stage 5 zoom-out review"
+  },
+  "ses_e37e8afd5ffe4XsVWAltPk2BxI": {
+    "agent": "egm",
+    "parentID": null,
+    "title": "Stage 5 on overdue_reminders.md"
+  }
+}

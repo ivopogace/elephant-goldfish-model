@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import time
@@ -347,6 +348,8 @@ def run(args) -> int:
 
 
 def main():
+    # A terminated driver must still stop its OpenCode server and proxy.
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('workflow', choices=sorted(workflows.WORKFLOWS))
     parser.add_argument('--output', required=True, help='new directory for this run')

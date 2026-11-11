@@ -363,6 +363,9 @@ def analyze(run: Path) -> dict:
             'guard_incomplete_notices': [{'agent': d['agent'], 'coverage': d['independent_read_coverage']}
                                          for d in completed if d['guard_incomplete_notice']],
             'by_agent': {a: sum(1 for d in children if d['agent'] == a) for a in sorted({d['agent'] for d in children})},
+            # A reviewer that read everything and then said nothing passes the guard's read check.
+            'empty_reviews': [d['agent'] for d in completed if not d['guard_incomplete_notice']
+                              and d['result_chars'] < 200],
             'reviewer_tool_calls': {o: sum(1 for c in reviewer_calls if c['outcome'].split(':')[0] == o)
                                     for o in sorted({c['outcome'].split(':')[0] for c in reviewer_calls})},
             'reviewer_non_read_glob_calls': [c for d in dispatches for c in d['child_non_read_glob_calls']],

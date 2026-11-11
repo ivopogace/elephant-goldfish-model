@@ -1,0 +1,16 @@
+{
+  "markers": {
+    "parent": "EGMEVAL_PARENT_5a1d1e9124e8",
+    "global": "EGMEVAL_GLOBAL_5a1d1e9124e8",
+    "project": "EGMEVAL_PROJECT_5a1d1e9124e8",
+    "nested": "EGMEVAL_NESTED_5a1d1e9124e8",
+    "configured": "EGMEVAL_CONFIGURED_5a1d1e9124e8",
+    "secret": "EGMEVAL_SECRET_5a1d1e9124e8",
+    "outside": "EGMEVAL_OUTSIDE_5a1d1e9124e8",
+    "other": "EGMEVAL_OTHER_5a1d1e9124e8"
+  },
+  "model": "opencode-go/longcat-2.5-free",
+  "author": "Robin Fixture",
+  "design": null,
+  "project": "<RUN>/project"
+}

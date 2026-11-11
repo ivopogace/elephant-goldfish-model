@@ -1,0 +1,17 @@
+{
+  "ses_e37fd72bdffeMf3PEg8gdpy51C": {
+    "agent": "egm-inventive-catalyst",
+    "parentID": "ses_e38006451ffeHeTca3ldlZGpss",
+    "title": "Stage 5 contradictory trade-offs"
+  },
+  "ses_e37fd72bfffeenaN3Rc2xstq0d": {
+    "agent": "egm-zoom-out",
+    "parentID": "ses_e38006451ffeHeTca3ldlZGpss",
+    "title": "Stage 5 zoom out review"
+  },
+  "ses_e38006451ffeHeTca3ldlZGpss": {
+    "agent": "egm",
+    "parentID": null,
+    "title": null
+  }
+}

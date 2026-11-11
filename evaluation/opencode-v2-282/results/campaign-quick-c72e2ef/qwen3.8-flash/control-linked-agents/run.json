@@ -1,0 +1,26 @@
+{
+  "workflow": "review_stage5",
+  "status": "completed",
+  "model": "opencode-go/qwen3.8-flash",
+  "opencode": "opencode v2.2.6",
+  "started": 1794358492.8236802,
+  "finished": 1794358931.9839826,
+  "session": "ses_e37e64165ffetOb4dxzmUhg9qC",
+  "gate_dwell": 6,
+  "cancel_first_gate": false,
+  "install": "/opt/egm-v2",
+  "operator": "script",
+  "human_wait_seconds": 0,
+  "agent": "egm",
+  "inject": false,
+  "long_design": false,
+  "link_agents_md": true,
+  "link_other_file": false,
+  "without_guard": false,
+  "preapprove_writes": false,
+  "record_tui": false,
+  "expected_artifacts": [
+    "zoom_out_report.md"
+  ],
+  "target": "<RUN>/project/docs/designs/overdue_reminders.md"
+}
